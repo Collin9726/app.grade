@@ -1,0 +1,33 @@
+{% load bootstrap3 %}
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://www.freepnglogos.com/uploads/logo-ig-png/png-logo-ig-instagram-social-media-icon-instagram-icon-icon-29.png" />
+    {% if title %}
+    <title>{{title}} | app.grade</title>
+    {% else %}
+    <title> app.grade </title>
+    {% endif %}
+
+    {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/gradeapp.css' %}">
+    {% endblock %}
+</head>
+<body>    
+    {% include "navbar.html" %}
+    {% block content %}
+        <!--content here-->
+    {% endblock %}
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        {% bootstrap_javascript %}
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+        <script src="{% static 'js/gradeapp.js' %}"></script>
+    {% endblock %}
+</body>
+</html>
