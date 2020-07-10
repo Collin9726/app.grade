@@ -3,3 +3,4 @@ virtual/
 *.pyc
 .vscode
 media/
+settings.py

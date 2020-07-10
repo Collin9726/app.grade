@@ -1,0 +1,1 @@
+web: gunicorn gradeproject.wsgi --log-file -
