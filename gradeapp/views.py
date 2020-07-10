@@ -35,7 +35,9 @@ def create_profile(request):
 
     else:
         form = NewProfileForm()
-    return render(request, 'create-profile.html', {"form": form})
+    
+    title = "Create profile"
+    return render(request, 'create-profile.html', {"form": form, "title": title})
 
 
 @login_required(login_url='/accounts/login/')
@@ -44,6 +46,38 @@ def my_profile(request):
     try:
         profile = Profile.objects.get(account_holder = current_user)
     except Profile.DoesNotExist:
-        return redirect(create_profile)    
+        return redirect(create_profile)
 
-    return render(request, 'my-profile.html', {"profile": profile})
+    title = profile.account_holder.username
+    return render(request, 'my-profile.html', {"profile": profile, "title": title})
+
+
+@login_required(login_url='/accounts/login/')
+def change_profile_photo(request):
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(account_holder = current_user)
+    except Profile.DoesNotExist:
+        raise Http404()
+    
+    if request.method == 'POST':
+        profile.profile_photo = request.FILES['img']        
+        profile.update_profile()
+        return redirect(my_profile)
+
+    title = "Profile photo"    
+    return render(request, 'update-prof-pic.html', {"title": title})
+
+
+@login_required(login_url='/accounts/login/')
+def delete_profile(request):
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(account_holder = current_user)
+    except Profile.DoesNotExist:
+        raise Http404()
+
+    profile.delete_profile()
+    current_user.delete()
+    
+    return redirect(index)

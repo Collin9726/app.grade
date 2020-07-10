@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+
+{% block content %}
+{{block.super}}
+
+<div class="container home-pg">
+    <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+            <div class="jumbotron text-center">
+                <form action="/changeprofilephoto/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="img">Choose image</label>
+                        <input type="file" id="img" name="img" accept="image/*" class="form-control">                  
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Update">
+                </form>                     
+            </div>
+        </div>
+        <div class="col-xs-3"></div>
+    </div>
+</div>
+
+{% endblock %}

@@ -12,8 +12,8 @@ urlpatterns=[
     # url(r'^uploadimage/$',views.upload_image,name = 'upload-image'),
     # url(r'^deleteimage/(\d+)',views.delete_image,name = 'delete-image'),
     # url(r'^updatecaption/(\d+)',views.update_caption,name = 'update-caption'),
-    # url(r'^changeprofilephoto/$',views.change_profile_photo,name = 'change-profile-photo'),
-    # url(r'^deleteprofile/$',views.delete_profile,name = 'delete-profile'),
+    url(r'^changeprofilephoto/$',views.change_profile_photo,name = 'change-profile-photo'),
+    url(r'^deleteprofile/$',views.delete_profile,name = 'delete-profile'),
     # url(r'^search/$',views.search_profile,name = 'search-profile'),
     # url(r'^userprofile/(\d+)',views.user_profile,name = 'user-profile'),
 ]
