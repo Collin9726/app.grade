@@ -4,11 +4,11 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns=[
-    url(r'^$',views.welcome,name = 'welcome'),
+    url(r'^$',views.index,name = 'index'),
     # url(r'^home/(\d+)',views.home,name = 'home'),
-    # url(r'^sendemail/$',views.send_email,name = 'send-email'),
-    # url(r'^createprofile/$',views.create_profile,name = 'create-profile'),
-    # url(r'^myprofile/$',views.my_profile,name = 'my-profile'),
+    url(r'^sendemail/$',views.send_email,name = 'send-email'),
+    url(r'^createprofile/$',views.create_profile,name = 'create-profile'),
+    url(r'^myprofile/$',views.my_profile,name = 'my-profile'),
     # url(r'^uploadimage/$',views.upload_image,name = 'upload-image'),
     # url(r'^deleteimage/(\d+)',views.delete_image,name = 'delete-image'),
     # url(r'^updatecaption/(\d+)',views.update_caption,name = 'update-caption'),

@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+
+{% block content %}
+{{block.super}}
+
+<div class="container home-pg">
+    <div class="row">
+        <div class="col-xs-3 prof-pic">
+            <img src="{{profile.profile_photo.url}}" alt="{{profile.account_holder.username}}">
+        </div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-4">
+            <h2>{{profile.account_holder.username}}</h2>
+            <p><span class="bolden">Bio: </span>{{profile.bio}}</p>            
+            <h5 class="text-muted">Joined on {{profile.created}}</h5>            
+        </div>
+        <div class="col-xs-4">
+            <br>
+            <h4 class="bolden">Account options</h4>
+            <ul>
+                <li><h5><a href="#">Upload image</a></h5></li>
+                <li><h5><a href="#">Change profile photo</a></h5></li> 
+                <li><h5><a href="#">Delete profile</a></h5></li>   
+                <li><h5><a href="/logout">Log out</a></h5></li>            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
