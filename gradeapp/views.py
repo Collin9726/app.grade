@@ -5,13 +5,14 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from .email import send_signup_email
 from .forms import NewProfileForm, NewProjectForm
-from .models import Profile
+from .models import Profile, Project
 
 
 
-def index(request):      
+def index(request):     
+    projects =  Project.objects.order_by("-posted")
     title = 'Home'
-    return render(request, 'home.html', {"title": title})
+    return render(request, 'home.html', {"title": title, "projects": projects})
 
 @login_required(login_url='/accounts/login/')
 def send_email(request):
