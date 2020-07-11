@@ -20,3 +20,30 @@ class Profile(models.Model):
 
     def update_profile(self):
         self.save()
+
+
+class Project(models.Model):    
+    posted = models.DateTimeField(auto_now_add=True)
+    cover_image = models.ImageField(upload_to = 'projects/')
+    title = models.CharField(max_length =30)
+    description = models.TextField()
+    link = models.CharField(max_length =150)
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    design_score = models.IntegerField(default=0)
+    usability_score = models.IntegerField(default=0)
+    content_score = models.IntegerField(default=0)
+    overall_score = models.IntegerField(default=0)
+    
+    
+
+    def __str__(self):
+        return self.title
+
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
+    def update_caption(self):
+        self.save()
