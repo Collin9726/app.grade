@@ -3,6 +3,7 @@ $(document).ready(function(){
       event.preventDefault()
       event.stopImmediatePropagation();
       form = $("#rating_form")
+      $('#rating_form').fadeOut()
   
       $.ajax({
         'url':'/ajax/rateproject/',
@@ -10,10 +11,14 @@ $(document).ready(function(){
         'data':form.serialize(),
         'dataType':'json',
         'success': function(data){
-          alert(data['success'])
+        //   alert(data['success']);
+          if(data.success){ 
+            setTimeout(function(){
+                 location.reload(); 
+            }, 1000); 
+         }
         },
-      })// END of Ajax method
-      $('#rating_form').hide()
+      })// END of Ajax method     
       
     }) // End of submit event    
   

@@ -40,13 +40,13 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
-    def save_image(self):
+    def save_project(self):
         self.save()
 
-    def delete_image(self):
+    def delete_project(self):
         self.delete()
 
-    def update_caption(self):
+    def update_description(self):
         self.save()
 
 

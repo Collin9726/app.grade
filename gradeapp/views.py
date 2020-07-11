@@ -161,6 +161,31 @@ def rate_project(request):
         raise Http404()
 
     ratings = Rating(design_score=design, usability_score=usability, content_score=content, overall_score=average, rated_by=profile, project=project)
-    ratings.save()    
+    ratings.save() 
+    new_ratings=Rating.objects.filter(project = project)
+    design_arr=[]
+    usability_arr=[]
+    content_arr=[]
+    average_arr=[]   
+    for new_rating in new_ratings:
+        design_arr.append(new_rating.design_score)
+        usability_arr.append(new_rating.usability_score)
+        content_arr.append(new_rating.content_score)
+        average_arr.append(new_rating.overall_score)
+    design_total=sum(design_arr)
+    design_avg=design_total/len(design_arr)
+    usability_total=sum(usability_arr)
+    usability_avg=usability_total/len(usability_arr)
+    content_total=sum(content_arr)
+    content_avg=content_total/len(content_arr)
+    average_total=sum(average_arr)
+    average_avg=average_total/len(average_arr)
+
+    project.design_score=design_avg
+    project.usability_score=usability_avg
+    project.content_score=content_avg
+    project.overall_score=average_avg
+    project.save()
+    
     data = {'success': f'Thanks for your review {profile.account_holder.username}'}
     return JsonResponse(data)
