@@ -7,7 +7,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-12 col-md-8">
             <img src="{{project.cover_image.url}}" alt="Project cover image">
             <hr>
             <h2>{{project.title}}</h2>
@@ -23,9 +23,74 @@
                 <li>Overall: {{project.overall_score}}</li>
             </ul>
         </div>
+        <div class="col-xs-12 col-md-4">
+            <h2>Rate project</h2>
+            <form id="rating_form">
+                {%csrf_token%}
+                
+                <h4>Design</h4>                               
+                <label class="radio-inline">
+                    <input type="radio" name="designradio" value="1">
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="designradio" value="2">
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="designradio" value="3">
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="designradio" value="4">
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="designradio" value="5">
+                </label>
+
+                <h4>Usability</h4>                               
+                <label class="radio-inline">
+                    <input type="radio" name="usabilityradio" value="1">
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="usabilityradio" value="2">
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="usabilityradio" value="3">
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="usabilityradio" value="4">
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="usabilityradio" value="5">
+                </label>
+
+                <h4>Content</h4>                               
+                <label class="radio-inline">
+                    <input type="radio" name="contentradio" value="1">
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="contentradio" value="2">
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="contentradio" value="3">
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="contentradio" value="4">
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="contentradio" value="5">
+                </label>
+
+                <input type="text" value="{{project.id}}" class="no-display" name="this_project">
+
+                <button class="btn btn-primary" type="submit">Rate</button>
+                
+            </form>
+        </div>
     </div>
 </div>
 
+{% endblock %}
 
-
+{% block scripts %} 
+{{block.super}}
+  <script type="text/javascript" src="{%static 'js/gradeapp.js'%}"></script>
 {% endblock %}

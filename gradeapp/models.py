@@ -48,3 +48,16 @@ class Project(models.Model):
 
     def update_caption(self):
         self.save()
+
+
+class Rating(models.Model): 
+    posted = models.DateTimeField(auto_now_add=True)
+    project = models.ForeignKey(Project,on_delete=models.CASCADE)
+    design_score = models.IntegerField(default=0)
+    usability_score = models.IntegerField(default=0)
+    content_score = models.IntegerField(default=0)
+    overall_score = models.IntegerField(default=0)
+    rated_by = models.ForeignKey(Profile,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.overall_score

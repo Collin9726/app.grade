@@ -3,9 +3,10 @@ from django.http  import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 from .email import send_signup_email
 from .forms import NewProfileForm, NewProjectForm
-from .models import Profile, Project
+from .models import Profile, Project, Rating
 
 
 
@@ -140,3 +141,25 @@ def view_project(request, project_id):
     title = project.title
     return render(request, 'project.html', {"profile": profile, "title": title, "project": project})
 
+
+@login_required(login_url='/accounts/login/')
+def rate_project(request):
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(account_holder = current_user)
+    except Profile.DoesNotExist:
+        raise Http404()
+    design = int(request.POST.get('designradio'))
+    usability = int(request.POST.get('usabilityradio'))
+    content = int(request.POST.get('contentradio'))    
+    average = (design+usability+content)/3
+    this_project_id = int(request.POST.get('this_project'))
+    try:
+        project = Project.objects.get(id = this_project_id)
+    except Project.DoesNotExist:
+        raise Http404()
+
+    ratings = Rating(design_score=design, usability_score=usability, content_score=content, overall_score=average, rated_by=profile, project=project)
+    ratings.save()    
+    data = {'success': f'Thanks for your review {profile.account_holder.username}'}
+    return JsonResponse(data)

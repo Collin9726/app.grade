@@ -208,4 +208,6 @@ img {
   }
   
 
-
+.no-display{
+  visibility: hidden;
+}
