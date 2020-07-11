@@ -4,9 +4,12 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from django.http import JsonResponse
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from .email import send_signup_email
 from .forms import NewProfileForm, NewProjectForm
 from .models import Profile, Project, Rating
+from .serializer import ProfileSerializer, ProjectSerializer
 
 
 
@@ -189,3 +192,18 @@ def rate_project(request):
     
     data = {'success': f'Thanks for your review {profile.account_holder.username}'}
     return JsonResponse(data)
+
+
+# API VIEWS
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profiles = Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles, many=True)
+        return Response(serializers.data)
+
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        all_projects = Project.objects.all()
+        serializers = ProjectSerializer(all_projects, many=True)
+        return Response(serializers.data)
