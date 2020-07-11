@@ -137,9 +137,10 @@ def view_project(request, project_id):
         project = Project.objects.get(id = project_id)
     except Project.DoesNotExist:
         raise Http404()
+    is_rated = Rating.objects.filter(project = project, rated_by = profile)[:1]
 
     title = project.title
-    return render(request, 'project.html', {"profile": profile, "title": title, "project": project})
+    return render(request, 'project.html', {"profile": profile, "title": title, "project": project, "is_rated":is_rated})
 
 
 @login_required(login_url='/accounts/login/')

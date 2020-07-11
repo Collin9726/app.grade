@@ -24,6 +24,16 @@
             </ul>
         </div>
         <div class="col-xs-12 col-md-4">
+            {% if is_rated %}
+            {% for rated in is_rated %}
+            <h4>You rated this project:</h4>
+            <ul>
+                <li>Design: {{rated.design_score}}</li>
+                <li>Usability: {{rated.usability_score}}</li>
+                <li>Content: {{rated.content_score}}</li>
+            </ul>
+            {% endfor %}
+            {% else %}
             <h2>Rate project</h2>
             <form id="rating_form">
                 {%csrf_token%}
@@ -83,7 +93,8 @@
 
                 <button class="btn btn-primary" type="submit">Rate</button>
                 
-            </form>
+            </form>            
+            {% endif %}
         </div>
     </div>
 </div>

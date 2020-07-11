@@ -13,7 +13,8 @@ $(document).ready(function(){
           alert(data['success'])
         },
       })// END of Ajax method
+      $('#rating_form').hide()
       
-    }) // End of submit event
+    }) // End of submit event    
   
   })
