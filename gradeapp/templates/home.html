@@ -24,8 +24,9 @@
                 <img class="card-img-top" src="{{project.cover_image.url}}" alt="Project cover image">
                 <div class="card-body">
                   <h5 class="card-title">{{project.title}}</h5>
+                  <h6 class="text-muted">By: {{project.profile.account_holder.username}}</h6>
                   <p class="card-text">Score: {{project.overall_score}}</p>
-                  <p>Link: <a href="{{project.link}}">{{project.link}}</a></p>
+                  <p>Link: <a href="{{project.link}}" target="_blank">{{project.link}}</a></p>
                   <a href="#" class="btn btn-primary">View project</a>
                 </div>
               </div>

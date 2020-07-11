@@ -49,8 +49,10 @@ def my_profile(request):
     except Profile.DoesNotExist:
         return redirect(create_profile)
 
+    projects = Project.objects.filter(profile = profile)
+
     title = profile.account_holder.username
-    return render(request, 'my-profile.html', {"profile": profile, "title": title})
+    return render(request, 'my-profile.html', {"profile": profile, "title": title, "projects": projects})
 
 
 @login_required(login_url='/accounts/login/')
