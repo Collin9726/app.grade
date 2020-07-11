@@ -106,3 +106,20 @@ def upload_project(request):
 
     title = "Upload Project"
     return render(request, 'upload-project.html', {"form": form, "title": title})
+
+
+@login_required(login_url='/accounts/login/')
+def user_profile(request, profile_id): 
+    current_user = request.user   
+    try:
+        profile = Profile.objects.get(id = profile_id)
+    except Profile.DoesNotExist:
+        raise Http404()
+
+    if profile.account_holder==current_user:
+        return redirect(my_profile)
+
+    projects = Project.objects.filter(profile = profile)
+
+    title = profile.account_holder.username
+    return render(request, 'user-profile.html', {"profile": profile, "title": title, "projects": projects})

@@ -1,17 +1,21 @@
 {%extends 'base.html'%}
-{% load bootstrap3 %} 
-{% load static %}
 
 {% block content %}
 {{block.super}}
 
-<div class="container">
+<div class="container home-pg">
     <div class="row">
-        <div class="col-xs-12">
-            <div class="jumbotron text-center">
-                <h2>app.grade</h2>
-                <h4>HOME</h4>
-            </div>
+        <div class="col-xs-3 prof-pic">
+            <img src="{{profile.profile_photo.url}}" alt="{{profile.account_holder.username}}">
+        </div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-4">
+            <h2>{{profile.account_holder.username}}</h2>
+            <p><span class="bolden">Bio: </span>{{profile.bio}}</p>            
+            <h5 class="text-muted">Joined on {{profile.created}}</h5>            
+        </div>
+        <div class="col-xs-4">
+            
         </div>
     </div>
 </div>
@@ -24,7 +28,6 @@
                 <img class="card-img-top" src="{{project.cover_image.url}}" alt="Project cover image">
                 <div class="card-body">
                   <h5 class="card-title">{{project.title}}</h5>
-                  <h6 class="text-muted">By: <a href="/userprofile/{{project.profile.id}}">{{project.profile.account_holder.username}}</a></h6>
                   <p class="card-text">Score: {{project.overall_score}}</p>
                   <p>Link: <a href="{{project.link}}" target="_blank">{{project.link}}</a></p>
                   <a href="#" class="btn btn-primary">View project</a>
@@ -34,5 +37,8 @@
         {% endfor %}
     </div>
 </div>
+
+
+
 
 {% endblock %}
