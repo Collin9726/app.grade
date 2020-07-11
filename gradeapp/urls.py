@@ -16,6 +16,7 @@ urlpatterns=[
     url(r'^deleteprofile/$',views.delete_profile,name = 'delete-profile'),
     # url(r'^search/$',views.search_profile,name = 'search-profile'),
     url(r'^userprofile/(\d+)',views.user_profile,name = 'user-profile'),
+    url(r'^viewproject/(\d+)',views.view_project,name = 'view-project'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -123,3 +123,20 @@ def user_profile(request, profile_id):
 
     title = profile.account_holder.username
     return render(request, 'user-profile.html', {"profile": profile, "title": title, "projects": projects})
+
+
+@login_required(login_url='/accounts/login/')
+def view_project(request, project_id): 
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(account_holder = current_user)
+    except Profile.DoesNotExist:
+        raise Http404()
+    try:
+        project = Project.objects.get(id = project_id)
+    except Project.DoesNotExist:
+        raise Http404()
+
+    title = project.title
+    return render(request, 'project.html', {"profile": profile, "title": title, "project": project})
+

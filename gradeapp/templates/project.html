@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %} 
+{% load static %}
+
+{% block content %}
+{{block.super}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8">
+            <img src="{{project.cover_image.url}}" alt="Project cover image">
+            <hr>
+            <h2>{{project.title}}</h2>
+            {% autoescape on %}
+            <p>{{project.description | safe}}</p>
+            {% endautoescape %}
+            <br>
+            <p><b>Scores</b></p>
+            <ul>
+                <li>Design: {{project.design_score}}</li>
+                <li>Usability: {{project.usability_score}}</li>
+                <li>Content: {{project.content_score}}</li>
+                <li>Overall: {{project.overall_score}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
