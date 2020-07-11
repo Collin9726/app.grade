@@ -93,3 +93,28 @@ class ProjectTestClass(TestCase):
         project.delete_project()
         projects = Project.objects.all()
         self.assertTrue(len(projects) == 0)
+
+
+class RatingTestClass(TestCase):
+    @override_settings(MEDIA_ROOT=tempfile.gettempdir())
+    # Set up method
+    def setUp(self):
+        temp_file = tempfile.NamedTemporaryFile()
+        test_image = get_temporary_image(temp_file)            
+        self.this_user =User.objects.create_user('mimi', 'mimi@gmail.com', 'moringa')        
+        self.this_profile = Profile(bio='bio', account_holder= self.this_user, profile_photo = test_image.name)        
+        self.this_profile.save_profile()
+        self.this_project= Project(title='myproject', description='mydescription', link='https//:myproject.com', profile = self.this_profile, cover_image = test_image.name )
+        self.this_project.save_project()
+        self.this_rating= Rating(project=self.this_project, rated_by=self.this_profile)
+        
+    def tearDown(self):
+        Profile.objects.all().delete()
+        Project.objects.all().delete()
+        User.objects.all().delete()
+        Rating.objects.all().delete()
+        
+
+    # Testing  instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.this_rating,Rating))
