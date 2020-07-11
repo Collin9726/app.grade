@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 
 
 # Create your models here.
@@ -26,7 +27,7 @@ class Project(models.Model):
     posted = models.DateTimeField(auto_now_add=True)
     cover_image = models.ImageField(upload_to = 'projects/')
     title = models.CharField(max_length =30)
-    description = models.TextField()
+    description = HTMLField()
     link = models.CharField(max_length =150)
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     design_score = models.IntegerField(default=0)

@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %} 
+{% load static %}
+
+{% block content %}
+{{block.super}}
+{{form.media}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="jumbotron text-center">
+                <h1>app.grade</h1>
+                <h2>Upload project</h2>                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form  action="{%url 'upload-project'%}" method="post" enctype="multipart/form-data">
+                {%csrf_token%}
+            
+                {% bootstrap_form form%}
+                <input type="submit" class="btn btn-primary" value="Upload">
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+{% endblock %}

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from .email import send_signup_email
-from .forms import NewProfileForm
+from .forms import NewProfileForm, NewProjectForm
 from .models import Profile
 
 
@@ -81,3 +81,25 @@ def delete_profile(request):
     current_user.delete()
     
     return redirect(index)
+
+
+@login_required(login_url='/accounts/login/')
+def upload_project(request):
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(account_holder = current_user)
+    except Profile.DoesNotExist:
+        raise Http404()
+    if request.method == 'POST':
+        form = NewProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            this_project = form.save(commit=False)
+            this_project.profile = profile
+            this_project.save()
+        return HttpResponseRedirect('/')
+
+    else:
+        form = NewProjectForm()
+
+    title = "Upload Project"
+    return render(request, 'upload-project.html', {"form": form, "title": title})
