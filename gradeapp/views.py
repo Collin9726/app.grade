@@ -13,10 +13,17 @@ from .serializer import ProfileSerializer, ProjectSerializer
 
 
 
-def index(request):     
+def index(request):  
+    profile = None
+    if request.user.is_authenticated:
+        current_user = request.user
+        try:
+            profile = Profile.objects.get(account_holder = current_user)
+        except Profile.DoesNotExist:
+            return redirect(create_profile)   
     projects =  Project.objects.order_by("-posted")
     title = 'Home'
-    return render(request, 'home.html', {"title": title, "projects": projects})
+    return render(request, 'home.html', {"title": title, "projects": projects, "profile": profile})
 
 @login_required(login_url='/accounts/login/')
 def send_email(request):

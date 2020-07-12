@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rochester&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fondamento&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif&display=swap");
 
 
@@ -7,207 +7,139 @@ html, body{
     color: black;
     height: 100%;
     width: 100%;    
-    font-family: 'PT Serif', serif; 
-    background-color: #f9f9f9;    
+    font-family: 'PT Serif', serif;  
+    font-size: medium;    
 }
 
-
-.navbar{
-  font-size: 2em;
+.navbar-brand{
+    font-family: 'Fondamento', cursive;
+    color: black !important;
+    font-weight: 600;
+    font-size: 1.5em;
 }
 
-/* navbar */
-.navbar-default {
-  background-color: white;
-  border-color: lightgray;
-}
-/* Title */
-.navbar-default .navbar-brand {
-  color: black;
-  font-family: 'Rochester', cursive;
-  font-size: 1em;
-  font-weight: 600;
-}
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-  color: #5E5E5E;
-}
-/* Link */
-.navbar-default .navbar-nav > li > a {
-  color: black;
-}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-  color: #333;
-}
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-  color: #555;
-  background-color: #E7E7E7;
-}
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
-  color: #555;
-  background-color: #D5D5D5;
+img {
+    width: 100%;
+    object-fit: cover;
 }
 
-
-.navbar-form input{
-  background-color: #fbfbfb;  
+.author-card{
+    color: lightgoldenrodyellow;    
 }
 
-/* .navbar-form input::placeholder{
-  color: rgb(47, 102, 97);
-} */
-
-.navbar-form button{
-  background-color: #f9f9f9;    
+.author-card p{
+    font-size: small;
 }
 
-.welcome-pg{
-  padding-top: 0%;
+.author-card img {    
+    width: 100%;    
+    object-fit: cover;
 }
 
-.welcome-pg .jumbotron{
-  background-color: transparent;
-  padding-right: 1em;
-  padding-left: 1em;
-  font-size: larger;
-}
-
-.welcome-pg h2{
-  font-size: 2.5em;
-  font-family: 'Rochester', cursive;
-  font-weight: bold;
-}
-
-.welcome-pg .card-body{
-  background-color: white;
-  padding: 5%;
-  border: lightgray solid 1px;
-}
-
-.welcome-pg p{
-  font-size: medium;
-}
-
-.padding{
-  margin-top: 1em;
-  margin-bottom: 2em;
-}
-
-.home-pg{
-  padding-top: 4%;
-}
-
-.home-pg a{
-  color: inherit;
-}
-
-.photo-link a{
-  color: inherit;
-}
-
-.card-body-top{
-  padding: 0.5em !important;
-}
-
-.prof-pic img{
-  border-radius: 50%;
-}
-
-.suggestions img{
-  border-radius: 50%;
-}
-
-.bolden{
-  font-weight: bold;
-}
-
-.margin-sm{
-  padding-top: 0.5em !important;
-}
-
-.btn-default-like{
-  background-color: transparent;
-  border-color: transparent;
-  padding-bottom: 0em;
-  margin-bottom: 0em;
-}
-
-.btn-default-like:hover{
-  color: brown;
-  background-color: transparent;
-  border-color: transparent;
-}
-
-.btn-default-comment{
-  background-color: transparent;
-  border-color: transparent;
-  padding-bottom: 0em;
-  margin-bottom: 0em;
-}
-
-.btn-default-comment:hover{
-  color: rgb(49, 48, 48);
-  background-color: transparent;
-  border-color: transparent;
-}
-
-
-.modal {
-  text-align: center;
-}
-
-.modal-body p{
-  font-size: medium;
-}
-
-.modal-body img{
-  height: auto !important;
-}
-
-@media screen and (min-width: 768px) { 
-  .modal:before {
-      display: inline-block;
-      vertical-align: middle;
-      content: " ";
-      height: 100%;
-  }
-}
-
-.modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
-}
-
-.modal-xlg {
-  width: 70%;     
-}
-
-.hover-pointer:hover{
-  cursor: pointer;
+.mb-4{
+    margin-bottom: 1em;
 }
 
 .row.display-flex {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .thumbnail {
-  height: 100%;
+    height: 100%;
+}
+
+.jumbo{
+    background-image: url('https://images.wallpaperscraft.com/image/surface_dark_background_texture_50754_1280x720.jpg');    
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 4em;
+    padding-bottom: 1em;
+}
+
+.jumbo a {    
+    color: inherit;
+}
+
+.carousel-border{    
+    margin-bottom: 1em;
+}
+
+.navbar{
+    margin-bottom: 0%;
+}
+
+.posts-card{
+    margin-bottom: 2em;
+}
+
+.jumbotron-quote{
+    padding-left: 2em !important;
+    padding-right: 2em !important;
+    background-color: #ece1e1;
+    border-radius: 0% !important;
+}
+
+.jumbotron-quote p{
+    font-size: 1.1em;
+}
+
+.orange{
+    color: orange;
+}
+
+.cyan{
+    color: lightcyan;
+}
+
+.carousel-caption{
+    background-color: rgb(0,0,0,0.7);
+    padding: 0.5em;
+    color: white;      
+}
+
+.under-nav{
+    padding-top: 3em;
+}
+
+.jumbo-comments{
+    padding-left: 2em !important;
+    padding-right: 2em !important;    
+    border-radius: 0% !important;
+    padding-top: 2em !important;
+}
+
+.jumbo-comments p{
+    font-size: medium;
+}
+
+.jumbo-comments a {    
+    color: inherit;
+}
+
+.card-post a{
+    color: inherit;
+}
+
+.jumbo-post-update{
+    background-color: transparent;
+}
+
+.carousel-inner img{
+    max-height: 60vh;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 425px) {
+    .carousel-inner img{
+        max-height: 30vh;
+        object-fit: cover;
+    }
 }
 
 
-img {
-    width: 100%;    
-    object-fit: cover;
-  }
-  
-
 .no-display{
-  visibility: hidden;
+visibility: hidden;
 }
