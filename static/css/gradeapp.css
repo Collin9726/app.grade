@@ -27,6 +27,14 @@ img {
     object-fit: cover;
 }
 
+a {
+    color: inherit;
+}
+
+a:hover{
+    color: inherit;
+}
+
 .row.display-flex {
   display: flex;
   flex-wrap: wrap;
@@ -89,13 +97,39 @@ img {
     font-size: 1.1em;
 }
 
-.project-card{
+.project-card{    
+    border: 1px solid lightgray;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.5em;
+    height: 100%;
+    background-color: #f6f6f6;
+}
+
+.project-card:hover{
+    transform: scale(1.01);
+}
+
+.mb-4{
     margin-bottom: 2em;
 }
 
 .bolden{
     font-weight: 600;
 }
+
+.label-success{
+    background-color: lightseagreen;
+}
+
+.label-default{
+    background-color: peru;
+}
+
+.label-primary{
+    background-color: darkblue;
+}
+
 
 
 
