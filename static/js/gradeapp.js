@@ -15,7 +15,7 @@ $(document).ready(function(){
           if(data.success){ 
             setTimeout(function(){
                  location.reload(); 
-            }, 1000); 
+            }, 500); 
          }
         },
       })// END of Ajax method     

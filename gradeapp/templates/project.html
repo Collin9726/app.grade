@@ -5,97 +5,124 @@
 {% block content %}
 {{block.super}}
 
+
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-md-8">
-            <img src="{{project.cover_image.url}}" alt="Project cover image">
-            <hr>
-            <h2>{{project.title}}</h2>
-            {% autoescape on %}
-            <p>{{project.description | safe}}</p>
-            {% endautoescape %}
-            <br>
-            <p><b>Scores</b></p>
-            <ul>
-                <li>Design: {{project.design_score}}</li>
-                <li>Usability: {{project.usability_score}}</li>
-                <li>Content: {{project.content_score}}</li>
-                <li>Overall: {{project.overall_score}}</li>
-            </ul>
-        </div>
-        <div class="col-xs-12 col-md-4">
-            {% if is_rated %}
-            {% for rated in is_rated %}
-            <h4>You rated this project:</h4>
-            <ul>
-                <li>Design: {{rated.design_score}}</li>
-                <li>Usability: {{rated.usability_score}}</li>
-                <li>Content: {{rated.content_score}}</li>
-            </ul>
-            {% endfor %}
-            {% else %}
-            <h2>Rate project</h2>
-            <form id="rating_form">
-                {%csrf_token%}
-                
-                <h4>Design</h4>                               
-                <label class="radio-inline">
-                    <input type="radio" name="designradio" value="2" checked>
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="designradio" value="4">
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="designradio" value="6">
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="designradio" value="8">
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="designradio" value="10">
-                </label>
+    <div class="row under-nav">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>{{project.title}}</h1>
+                    <h5><span class="label label-primary">Score {{project.overall_score}}</span> - 
+                        <span class="label label-success">Design {{project.design_score}}</span> 
+                        <span class="label label-default">Usability {{project.usability_score}}</span> 
+                        <span class="label label-danger">Content {{project.content_score}}</span>                                 
+                    </h5>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <!--post-->
+                <div class="col-xs-12 col-sm-7">
+                    <div class="card card-post">
+                        <div class="card-body">
+                            <a href="{{project.link}}" target="_blank"><img src="{{project.cover_image.url}}" alt="Project cover image"></a>                            
+                            <hr>    
+                            <h5 class="bolden"><span class="fa fa-user"></span> By:<a href="/userprofile/{{project.profile.id}}"> {{project.profile.account_holder.username}}</a></h5> 
+                            <h5 class="bolden"><span class="glyphicon glyphicon-link"></span><a href="{{project.link}}" target="_blank"> Project site</a></h5>                                                          
+                            <h5 class="text-muted">{{project.posted}}</h5>
+                            <h4 class="bolden">Description</h4>
+                            {% autoescape on %}
+                            <p class="card-text">{{project.description | safe}}</p>
+                            {% endautoescape %}                    
+                            <div class="row under-nav"></div>                                  
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-0 col-sm-1"></div>
+                <!--comments-->
+                <div class="col-xs-12 col-sm-4 jumbotron jumbo-scores">
+                    <div class="row">                        
+                        <div class="col-xs-12">
+                            {% if is_rated %}
+                            {% for rated in is_rated %}
+                            <h4 class="bolden">You rated this project:</h4>
+                            <h5><span class="label label-primary">Score {{rated.overall_score}}</span> - 
+                                <span class="label label-success">Design {{rated.design_score}}</span> 
+                                <span class="label label-default">Usability {{rated.usability_score}}</span> 
+                                <span class="label label-danger">Content {{rated.content_score}}</span>                                 
+                            </h5> 
+                            {% endfor %}
+                            {% else %}
+                            <h3 class="bolden">Rate project</h3>
+                            <form id="rating_form">
+                                {%csrf_token%}                                
+                                         
+                                <label class="radio-inline">
+                                    <input type="radio" name="designradio" value="2" checked>
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="designradio" value="4">
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="designradio" value="6">
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="designradio" value="8">
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="designradio" value="10">
+                                </label>
+                                <h5 class="bolden">Design: <span class="label label-success">1-10</span></h5>
+                                                               
+                                <label class="radio-inline">
+                                    <input type="radio" name="usabilityradio" value="2" checked>
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="usabilityradio" value="4">
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="usabilityradio" value="6">
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="usabilityradio" value="8">
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="usabilityradio" value="10">
+                                </label>
+                                <h5 class="bolden">Usability: <span class="label label-default">1-10</span></h5>
+                                                            
+                                <label class="radio-inline">
+                                    <input type="radio" name="contentradio" value="2" checked>
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="contentradio" value="4">
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="contentradio" value="6">
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="contentradio" value="8">
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="contentradio" value="10">
+                                </label>
+                                <h5 class="bolden">Content: <span class="label label-danger">1-10</span></h5>
 
-                <h4>Usability</h4>                               
-                <label class="radio-inline">
-                    <input type="radio" name="usabilityradio" value="2" checked>
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="usabilityradio" value="4">
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="usabilityradio" value="6">
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="usabilityradio" value="8">
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="usabilityradio" value="10">
-                </label>
+                                <input type="text" value="{{project.id}}" class="no-display" name="this_project">
 
-                <h4>Content</h4>                               
-                <label class="radio-inline">
-                    <input type="radio" name="contentradio" value="2" checked>
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="contentradio" value="4">
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="contentradio" value="6">
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="contentradio" value="8">
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="contentradio" value="10">
-                </label>
-
-                <input type="text" value="{{project.id}}" class="no-display" name="this_project">
-
-                <button class="btn btn-primary" type="submit">Rate</button>
-                
-            </form>            
-            {% endif %}
-        </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <button class="btn btn-default" type="submit">Rate</button>
+                                    </div>
+                                </div>
+                                
+                            </form>            
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>       
     </div>
 </div>
 

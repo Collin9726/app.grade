@@ -130,11 +130,38 @@ a:hover{
     background-color: darkblue;
 }
 
+.under-nav{
+    padding-top: 3em;
+}
 
+.jumbo-scores{
+    padding-left: 2em !important;
+    padding-right: 2em !important;    
+    border-radius: 0% !important;
+    padding-top: 2em !important;
+}
 
+.jumbo-comments p{
+    font-size: medium;
+}
 
+.card-post .label{
+    margin-right: 0.5em;
+}
 
+#rating_form h5{
+    margin-top: 1em;
+}
 
+#rating_form .btn-default{
+    background-color: darkblue;
+    color: white;
+}
+
+#rating_form .btn-default:hover{
+    background-color: blue;
+    color: white;
+}
 
 /* 
 .author-card{
