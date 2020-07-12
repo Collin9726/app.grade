@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span> {{profile.account_holder.username}} <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span> My Profile <span class="caret"></span></a>
                     <ul class="dropdown-menu"> 
                         <li><a href="{%url 'upload-project'%}">Upload Project</a></li>   
                         <li><a href="{%url 'my-profile'%}">My Profile</a></li>

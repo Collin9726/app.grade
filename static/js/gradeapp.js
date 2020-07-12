@@ -20,6 +20,10 @@ $(document).ready(function(){
         },
       })// END of Ajax method     
       
-    }) // End of submit event    
+    }) // End of submit event 
+    
+    $('#account_settings').click(function(event){
+      $('.account_options').toggle()
+    })
   
   })

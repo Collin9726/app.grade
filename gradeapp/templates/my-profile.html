@@ -3,18 +3,22 @@
 {% block content %}
 {{block.super}}
 
-<div class="container home-pg">
-    <div class="row">
-        <div class="col-xs-3 prof-pic">
-            <img src="{{profile.profile_photo.url}}" alt="{{profile.account_holder.username}}">
+<div class="container">
+    <br>
+    <div class="row under-nav">
+        <div class="col-xs-12 col-sm-6 col-md-3 prof-pic">
+            <img class="thumbnail" src="{{profile.profile_photo.url}}" alt="{{profile.account_holder.username}}">
         </div>
-        <div class="col-xs-1"></div>
-        <div class="col-xs-4">
+        <div class="col-xs-0 col-sm-0 col-md-1"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
             <h2>{{profile.account_holder.username}}</h2>
-            <p><span class="bolden">Bio: </span>{{profile.bio}}</p>            
-            <h5 class="text-muted">Joined on {{profile.created}}</h5>            
+            <p><span class="bolden">Bio: </span>{{profile.bio}}</p> 
+            <p><span class="bolden"><span class="fa fa-envelope"></span></span> {{profile.account_holder.email}}</p>           
+            <h5 class="text-muted">Joined on {{profile.created}}</h5>
+            <hr>
+            <button class="btn btn-default" id="account_settings">Account Settings <span class="fa fa-cog"></span></button>            
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-12 col-sm-6 col-md-4 account_options">
             <br>
             <h4 class="bolden">Account options</h4>
             <ul>
@@ -27,19 +31,25 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container">    
     <div class="row display-flex">
+        <div class="col-xs-12">
+            <h2 class="bolden">My Projects</h2>            
+        </div>
         {% for project in projects %}
-        <div class="col-xs-12 col-md-4">
-            <div class="card">
-                <img class="card-img-top" src="{{project.cover_image.url}}" alt="Project cover image">
-                <div class="card-body">
-                  <h5 class="card-title">{{project.title}}</h5>
-                  <p class="card-text">Score: {{project.overall_score}}</p>
-                  <p>Link: <a href="{{project.link}}" target="_blank">{{project.link}}</a></p>
-                  <a href="#" class="btn btn-primary">View project</a>
+        <div class="col-xs-12 col-md-4 mb-4">
+            <div class="card project-card">
+                <h4 class="bolden">{{project.title}}</h4>
+                <a href="/viewproject/{{project.id}}"><img class="card-img-top" src="{{project.cover_image.url}}" alt="Project cover image"></a>                        
+                <div class="card-body"> 
+                    <h5 class="bolden"><span class="glyphicon glyphicon-link"></span><a href="{{project.link}}" target="_blank"> Project site</a></h5>                                                 
+                    <h5><span class="label label-primary">Score {{project.overall_score}}</span> - 
+                        <span class="label label-success">Design {{project.design_score}}</span> 
+                        <span class="label label-default">Usability {{project.usability_score}}</span> 
+                        <span class="label label-danger">Content {{project.content_score}}</span>                                 
+                    </h5>                     
                 </div>
-              </div>
+            </div>
         </div>
         {% endfor %}
     </div>

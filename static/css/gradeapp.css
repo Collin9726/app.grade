@@ -163,6 +163,10 @@ a:hover{
     color: white;
 }
 
+.account_options{
+    display: none;
+}
+
 /* 
 .author-card{
     color: lightgoldenrodyellow;    
