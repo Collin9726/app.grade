@@ -22,8 +22,12 @@ $(document).ready(function(){
       
     }) // End of submit event 
     
-    $('#account_settings').click(function(event){
-      $('.account_options').toggle()
+    $('#account_settings').click(function(){
+      $('.account_options').toggle();
+    });
+
+    $('#edit_proj').click(function(){
+      $('.project_options').show()
     })
   
   })

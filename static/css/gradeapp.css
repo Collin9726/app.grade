@@ -159,7 +159,8 @@ a:hover{
     color: white;
 }
 
-.account_options{
+.account_options,
+.project_options{
     display: none;
 }
 
