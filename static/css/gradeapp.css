@@ -141,10 +141,6 @@ a:hover{
     padding-top: 2em !important;
 }
 
-.jumbo-comments p{
-    font-size: medium;
-}
-
 .card-post .label{
     margin-right: 0.5em;
 }
@@ -166,6 +162,13 @@ a:hover{
 .account_options{
     display: none;
 }
+
+.jumbo-project-update{
+    background-color: transparent;
+}
+
+
+
 
 /* 
 .author-card{

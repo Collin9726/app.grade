@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="col-xs-0 col-sm-1"></div>
-                <!--comments-->
+                <!--scores-->
                 <div class="col-xs-12 col-sm-4 jumbotron jumbo-scores">
                     <div class="row">                        
                         <div class="col-xs-12">
@@ -120,6 +120,24 @@
                             {% endif %}
                         </div>
                     </div>
+
+                    {% if project.profile.account_holder == current_user %}
+                    <hr>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button class="btn btn-default" id="edit_project">Edit Project <span class="fa fa-cog"></span></button>
+                        </div>
+                        <div class="col-xs-12 project_options">
+                            <h4 class="bolden">Edit options</h4>
+                            <ul>
+                                <li><h5><a href="/updatedescription/{{project.id}}">Edit description</a></h5></li>
+                                <li><h5><a href="/deleteproject/{{project.id}}">Delete project</a></h5></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
+
+
                 </div>
             </div>            
         </div>       

@@ -1,0 +1,57 @@
+{%extends 'base.html'%}
+
+{% block content %}
+{{block.super}}
+
+
+<div class="container">
+    <div class="row under-nav">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>Update description</h1>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <!--project-->
+                <div class="col-xs-12 col-sm-6">
+                    <div class="card card-post">
+                        <div class="card-body">                            
+                            <h4 class="card-title bolden">{{project.title | upper}}</h4>
+                            <a href="{{project.link}}" target="_blank"><img class="card-img-top" src="{{project.cover_image.url}}" alt="Project cover image"></a>                            
+                            <hr>    
+                            <h5 class="bolden"><span class="fa fa-user"></span> By:<a href="/userprofile/{{project.profile.id}}"> {{project.profile.account_holder.username}}</a></h5> 
+                            <h5 class="bolden"><span class="glyphicon glyphicon-link"></span><a href="{{project.link}}" target="_blank"> Project site</a></h5>                                                          
+                            <h5 class="text-muted">{{project.posted}}</h5>
+                            <h4 class="bolden">Description</h4>
+                            {% autoescape on %}
+                            <p class="card-text">{{project.description | safe}}</p>
+                            {% endautoescape %}                    
+                            <div class="row under-nav"></div>                                  
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-0 col-sm-1"></div>
+                <!--update project-->
+                <div class="col-xs-12 col-sm-5 jumbotron jumbo-scoress jumbo-project-update">
+                    <div class="row">
+                        <div class="col-xs-12 mb-4">
+                            <form action="/updatedescription/{{project.id}}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="caption">Update description</label>                        
+                                    <Textarea class="form-control" name="newdescription" rows="20">{{ project.description }}</Textarea>                  
+                                </div>
+                                <input type="submit" class="btn btn-primary" value="Update">
+                            </form>
+                        </div>
+                    </div>                   
+                </div>
+            </div>            
+        </div>       
+    </div>
+</div>
+
+
+{% endblock %}

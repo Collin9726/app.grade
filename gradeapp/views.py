@@ -151,7 +151,7 @@ def view_project(request, project_id):
     is_rated = Rating.objects.filter(project = project, rated_by = profile)[:1]
 
     title = project.title
-    return render(request, 'project.html', {"profile": profile, "title": title, "project": project, "is_rated":is_rated})
+    return render(request, 'project.html', {"profile": profile, "title": title, "project": project, "is_rated":is_rated, "current_user":current_user})
 
 
 @login_required(login_url='/accounts/login/')
@@ -200,6 +200,62 @@ def rate_project(request):
     
     data = {'success': f'Thanks for your review {profile.account_holder.username}'}
     return JsonResponse(data)
+
+
+@login_required(login_url='/accounts/login/')
+def delete_project(request, project_id):
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(account_holder = current_user)
+    except Profile.DoesNotExist:
+        raise Http404()
+
+    try:
+        project = Project.objects.get(id = project_id)
+    except Project.DoesNotExist:
+        raise Http404()   
+
+    if project.profile == profile:
+        project.delete_project()
+        return redirect(my_profile)
+    else:
+        raise Http404()
+
+
+
+@login_required(login_url='/accounts/login/')
+def update_description(request, project_id):
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(account_holder = current_user)
+    except Profile.DoesNotExist:
+        raise Http404()
+
+    try:
+        project = Project.objects.get(id = project_id)
+    except Project.DoesNotExist:
+        raise Http404()
+
+    title = "Update project"
+
+    if project.profile == profile:
+        if 'newdescription' in request.GET and request.GET["newdescription"]:
+            new_description = request.GET.get("newdescription")
+            project.description = new_description
+            project.update_description()
+            return HttpResponseRedirect(f'/viewproject/{project.id}')
+        else:
+            return render(request, 'update-description.html', {"project":project, "title":title})
+
+    else:
+        raise Http404()
+
+
+
+
+
+
+
 
 
 # API VIEWS
