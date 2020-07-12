@@ -20,10 +20,11 @@ def index(request):
         try:
             profile = Profile.objects.get(account_holder = current_user)
         except Profile.DoesNotExist:
-            return redirect(create_profile)   
+            return redirect(create_profile) 
+    featured = Project.objects.order_by("-overall_score")[:3]  
     projects =  Project.objects.order_by("-posted")
     title = 'Home'
-    return render(request, 'home.html', {"title": title, "projects": projects, "profile": profile})
+    return render(request, 'home.html', {"title": title, "projects": projects, "profile": profile, "featured": featured})
 
 @login_required(login_url='/accounts/login/')
 def send_email(request):
