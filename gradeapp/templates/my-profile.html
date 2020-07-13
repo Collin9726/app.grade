@@ -23,10 +23,30 @@
             <h4 class="bolden">Account options</h4>
             <ul>
                 <li><h5><a href="{%url 'upload-project'%}">Upload project</a></h5></li>
-                <li><h5><a href="{%url 'change-profile-photo'%}">Change profile photo</a></h5></li> 
-                <li><h5><a href="{%url 'delete-profile'%}">Delete profile</a></h5></li>   
+                <li><h5><a href="{%url 'change-profile-photo'%}">Change profile photo</a></h5></li>
+                <li><h5><a href="#" data-toggle="modal" data-target="#deleteProfile">Delete profile</a></h5></li>                 
                 <li><h5><a href="/logout">Log out</a></h5></li>            
             </ul>
+            <!-- Modal -->
+            <div class="modal fade" id="deleteProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">                                                       
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="bolden">{{profile.account_holder.username}}</h4> 
+                        </div>
+                        <div class="modal-body">
+                            <h5>Are you sure you want to delete your profile??</h5>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="{%url 'delete-profile'%}"><button type="button" class="btn btn-danger">Yes</button></a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

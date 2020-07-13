@@ -3,11 +3,25 @@
 {% block content %}
 {{block.super}}
 
-<div class="container home-pg">
-    <div class="row">
-        <div class="col-xs-3"></div>
-        <div class="col-xs-6">
-            <div class="jumbotron text-center">
+<div class="container auth-pg">
+    <div class="row under-nav">
+        <div class="col-xs-12 col-md-3"></div>
+        <div class="col-xs-12 col-md-6">
+            <div class="jumbotron">
+                <div class="row">                
+                    <div class="col-xs-12 text-center">
+                      <h3>
+                        <span class="auth">
+                          <span class="label label-primary">ap</span>
+                          <span class="label label-success">p.g</span>
+                          <span class="label label-default">ra</span>
+                          <span class="label label-danger">de</span>
+                        </span>
+                      </h3>
+                    </div>                
+                </div>
+                <h2 class="text-center title-font">app.grade</h2>
+                <hr>                
                 <form action="/changeprofilephoto/" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group">
@@ -18,7 +32,7 @@
                 </form>                     
             </div>
         </div>
-        <div class="col-xs-3"></div>
+        <div class="col-xs-12 col-md-3"></div>
     </div>
 </div>
 

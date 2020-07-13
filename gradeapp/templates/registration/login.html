@@ -1,22 +1,27 @@
 {%extends "../django_registration/base.html"%}
 {% load bootstrap3 %}
 {% block content %}
-<div class="container-fluid welcome-pg">
-  <div class="row">
-      <div class="col-md-4"></div>            
-      <div class="col-xs-12 col-md-4">
+<div class="container-fluid auth-pg">
+  <div class="row under-nav">
+      <div class="col-xs-12 col-lg-4"></div>            
+      <div class="col-xs-12 col-lg-4">
         
         <div class="jumbotron">
           <div class="card">
             <div class="card-body">
-              <div class="row">
-                <div class="col-xs-4"></div>
-                <div class="col-xs-4">
-                  <img src="https://www.freepnglogos.com/uploads/logo-ig-png/png-logo-ig-instagram-social-media-icon-instagram-icon-icon-29.png" alt="logo">
-                </div>
-                <div class="col-xs-4"></div>
+              <div class="row">                
+                <div class="col-xs-12 text-center">
+                  <h3>
+                    <span class="auth">
+                      <span class="label label-primary">ap</span>
+                      <span class="label label-success">p.g</span>
+                      <span class="label label-default">ra</span>
+                      <span class="label label-danger">de</span>
+                    </span>
+                  </h3>
+                </div>                
               </div>
-              <h2 class="text-center">app.grade</h2>  
+              <h2 class="text-center title-font">app.grade</h2>  
               <br>
               <form  action="/accounts/login/" method="post">
                 {% csrf_token %}
@@ -35,13 +40,13 @@
           <br>
           <div class="card">
             <div class="card-body text-center">
-              <p>Don't have an account? <a href="/accounts/register">Sign up</a></p>
+              <h5 class="bolden">Don't have an account? <a href="/accounts/register">Sign up</h5>
             </div>
           </div>
         </div>        
   
       </div>
-      <div class="col-md-4"></div>
+      <div class="col-xs-12 col-lg-4"></div>
   </div>
 </div>
 

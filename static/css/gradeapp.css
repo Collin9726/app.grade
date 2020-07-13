@@ -15,7 +15,7 @@ html, body{
     font-family: 'Fondamento', cursive;
     color: black !important;
     font-weight: 600;
-    font-size: 1.5em;
+    font-size: 2em;
 }
 
 .no-display{
@@ -168,9 +168,36 @@ a:hover{
     background-color: transparent;
 }
 
+.title-font{
+    font-family: 'Fondamento', cursive;
+    font-size: 3em;
+    font-weight: 600;
+}
 
+.auth-pg .jumbotron{
+    background-color: transparent;
+}
 
+.auth-pg .card{
+    border: 1px solid lightgray;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.5em;
+    height: 100%;
+    background-color: #f6f6f6;
+}
 
+.no-pad-top{
+    padding-top: 0em;
+}
+
+@media screen and (max-width: 1439px) and (min-width:768px){
+    .app-intro{
+        padding-left: 1em !important;
+        padding-right: 1em !important;        
+    }
+}
 /* 
 .author-card{
     color: lightgoldenrodyellow;    

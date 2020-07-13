@@ -61,3 +61,9 @@ class Rating(models.Model):
 
     def __str__(self):
         return self.overall_score
+
+
+class Quote:
+    def __init__(self,author,quote):
+        self.author = author
+        self.quote = quote

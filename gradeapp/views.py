@@ -10,6 +10,7 @@ from .email import send_signup_email
 from .forms import NewProfileForm, NewProjectForm
 from .models import Profile, Project, Rating
 from .serializer import ProfileSerializer, ProjectSerializer
+from .requests import get_quote
 
 
 
@@ -23,8 +24,9 @@ def index(request):
             return redirect(create_profile) 
     featured = Project.objects.order_by("-overall_score")[:3]  
     projects =  Project.objects.order_by("-posted")
+    quote=get_quote()
     title = 'Home'
-    return render(request, 'home.html', {"title": title, "projects": projects, "profile": profile, "featured": featured})
+    return render(request, 'home.html', {"title": title, "projects": projects, "profile": profile, "featured": featured, "quote":quote})
 
 @login_required(login_url='/accounts/login/')
 def send_email(request):
@@ -115,9 +117,10 @@ def upload_project(request):
 
     else:
         form = NewProjectForm()
-
+    
+    quote = get_quote()
     title = "Upload Project"
-    return render(request, 'upload-project.html', {"form": form, "title": title})
+    return render(request, 'upload-project.html', {"form": form, "title": title, "quote":quote})
 
 
 @login_required(login_url='/accounts/login/')
@@ -251,10 +254,19 @@ def update_description(request, project_id):
         raise Http404()
 
 
+@login_required(login_url='/accounts/login/')
+def search_project(request):
+    if 'searchproject' in request.GET and request.GET["searchproject"]:
+        search_term = request.GET.get("searchproject") 
+        search_projects = Project.objects.filter(title__icontains = search_term)
+        
+        message = f"{search_term}"
 
+        return render(request, 'search.html',{"message":message, "projects":search_projects})
 
-
-
+    else:
+        blank_message = "You haven't searched for any project."
+        return render(request, 'search.html',{"blank_message":blank_message})
 
 
 

@@ -4,8 +4,7 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns=[
-    url(r'^$',views.index,name = 'index'),
-    # url(r'^home/(\d+)',views.home,name = 'home'),
+    url(r'^$',views.index,name = 'index'),    
     url(r'^sendemail/$',views.send_email,name = 'send-email'),
     url(r'^createprofile/$',views.create_profile,name = 'create-profile'),
     url(r'^myprofile/$',views.my_profile,name = 'my-profile'),
@@ -14,7 +13,7 @@ urlpatterns=[
     url(r'^updatedescription/(\d+)',views.update_description,name = 'update-description'),
     url(r'^changeprofilephoto/$',views.change_profile_photo,name = 'change-profile-photo'),
     url(r'^deleteprofile/$',views.delete_profile,name = 'delete-profile'),
-    # url(r'^search/$',views.search_profile,name = 'search-profile'),
+    url(r'^search/$',views.search_project,name = 'search-project'),
     url(r'^userprofile/(\d+)',views.user_profile,name = 'user-profile'),
     url(r'^viewproject/(\d+)',views.view_project,name = 'view-project'),
     url(r'^ajax/rateproject/$', views.rate_project, name='rate-project'),    

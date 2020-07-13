@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+
+{% block content %}
+{{block.super}}
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container auth-pg">
+    <div class="row under-nav">
+        <div class="col-xs-12 col-md-3"></div>
+        <div class="col-xs-12 col-md-6">
+            <div class="jumbotron">
+                <h3 class="text-center">
+                    <span class="label label-primary">ap</span>
+                    <span class="label label-success">p.g</span>
+                    <span class="label label-default">ra</span>
+                    <span class="label label-danger">de</span>
+                </h3>
+                <h2 class="text-center title-font">app.grade</h2>
+                <hr>
+                <h3>Search results</h3>
+                {% if blank_message %}    
+                <h4 class="bolden">{{blank_message}}</p> 
+                {% else %}    
+                    {% if projects %}
+                    <ul>
+                        {% for project in projects %}
+                        <li><h4 class="bolden"><a href="/viewproject/{{project.id}}">{{project.title}}</a></h4></li>
+                        {% endfor %}
+                    </ul>                        
+                    {% else %}
+                    <h4 class="bolden">No project matching "{{message}}"</h4>  
+                    {% endif %} 
+                {% endif %}    
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-3"></div>
+    </div>
+</div>
+
+{% endblock %}
