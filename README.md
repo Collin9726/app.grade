@@ -1,10 +1,12 @@
+[![codebeat badge](https://codebeat.co/badges/048bac97-6711-461c-b259-83043d35b7d0)](https://codebeat.co/projects/github-com-collin9726-app-grade-master)
+
 # app.grade
 #### An app where developers post projects for reviews, 13/07/2020
 #### By [Collin Owino](https://github.com/Collin9726)
 
 ### [app.grade app](https://appgradecdev.herokuapp.com/)
 
-<img src="..."
+<img src="static/app-images/appgrade.png"
      alt="app.grade home image"
      style="width=100%;" />
 
@@ -34,12 +36,12 @@ The project also offers API endpoints.
 
 ## Development
 
-The app has been developed with Django 3.0.7. It is hosted on Heroku cloud platform. It uses PostgreSQL database for app data and AWS S3 buckets to store static and media files. The app makes use of dependencies as listed on `requirements.txt`. Testcases have been written for all model methods. It's source code is available on GitHub at https://github.com/Collin9726/app.grade
+The app has been developed with Django 3.0.7. It uses django REST for API functionalities. It is hosted on Heroku cloud platform and makes use of PostgreSQL database for app data while AWS S3 buckets stores static and media files. The app uses dependencies as listed on `requirements.txt`. Testcases have been written for all model methods and API endpoints tested with Postman. It's source code is available on GitHub at https://github.com/Collin9726/app.grade
 
 
 ## API endpoints
-...
-...
+- https://appgradecdev.herokuapp.com/api/profiles/
+- https://appgradecdev.herokuapp.com/api/projects/
 
 ## Setup & Run instructions
 - Clone the repo to your machine
