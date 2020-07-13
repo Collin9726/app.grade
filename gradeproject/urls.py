@@ -29,6 +29,7 @@ urlpatterns = [
     path("logout/", auth_views.LogoutView.as_view()), 
     url(r'^',include('gradeapp.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
 ]
 
 

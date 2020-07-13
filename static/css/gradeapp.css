@@ -198,6 +198,15 @@ a:hover{
         padding-right: 1em !important;        
     }
 }
+
+.quote p{
+    font-size: medium;
+}
+
+.green{
+    color: rgb(75, 74, 74);
+}
+
 /* 
 .author-card{
     color: lightgoldenrodyellow;    
