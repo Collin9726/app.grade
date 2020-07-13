@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .email import send_signup_email
 from .forms import NewProfileForm, NewProjectForm
 from .models import Profile, Project, Rating
@@ -23,7 +24,17 @@ def index(request):
         except Profile.DoesNotExist:
             return redirect(create_profile) 
     featured = Project.objects.order_by("-overall_score")[:3]  
-    projects =  Project.objects.order_by("-posted")
+    projects_set =  Project.objects.order_by("-posted")
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(projects_set, 6)
+    try:
+        projects = paginator.page(page)
+    except PageNotAnInteger:
+        projects = paginator.page(1)
+    except EmptyPage:
+        projects = paginator.page(paginator.num_pages)
+
     quote=get_quote()
     title = 'Home'
     return render(request, 'home.html', {"title": title, "projects": projects, "profile": profile, "featured": featured, "quote":quote})
@@ -50,9 +61,10 @@ def create_profile(request):
 
     else:
         form = NewProfileForm()
-    
+
+    quote = get_quote()    
     title = "Create profile"
-    return render(request, 'create-profile.html', {"form": form, "title": title})
+    return render(request, 'create-profile.html', {"form": form, "title": title, "quote":quote})
 
 
 @login_required(login_url='/accounts/login/')
@@ -106,7 +118,7 @@ def upload_project(request):
     try:
         profile = Profile.objects.get(account_holder = current_user)
     except Profile.DoesNotExist:
-        raise Http404()
+        return redirect(create_profile)
     if request.method == 'POST':
         form = NewProjectForm(request.POST, request.FILES)
         if form.is_valid():

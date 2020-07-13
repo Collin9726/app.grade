@@ -6,28 +6,46 @@
 {{block.super}}
 
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="jumbotron text-center">
-                <h1>app.grade</h1>
-                <h2>Create Profile</h2>                
+    <div class="row under-nav">
+        <div class="col-xs-12 col-sm-8">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>
+                        <span class="auth">
+                          <span class="label label-primary">ap</span>
+                          <span class="label label-success">p.g</span>
+                          <span class="label label-default">ra</span>
+                          <span class="label label-danger">de</span>
+                        </span>
+                      </h3>
+                    <h1>Create Profile</h1>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <form  action="{%url 'create-profile'%}" method="post" enctype="multipart/form-data">
+                        {%csrf_token%}
+                    
+                        {% bootstrap_form form%}
+                        <input type="submit" class="btn btn-primary" value="Create">
+                    </form>
+                </div>
+            </div>
+            <div class="row under-nav"></div>
+        </div>
+        <div class="col-xs-0 col-sm-1"></div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="jumbotron jumbotron-quote">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2><u>Quote</u></h2>
+                        <p>"{{quote.quote}}"</p>
+                        <p class="text-muted">- {{quote.author}}</p>                        
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <form  action="{%url 'create-profile'%}" method="post" enctype="multipart/form-data">
-                {%csrf_token%}
-            
-                {% bootstrap_form form%}
-                <input type="submit" class="btn btn-primary" value="Post">
-            </form>
-        </div>
-        <div class="col-md-3"></div>
     </div>
 </div>
 
